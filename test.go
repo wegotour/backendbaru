@@ -1,4 +1,4 @@
-package model
+package backendbaru
 
 import (
 	"crypto/rand"
@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/wegotour/backendbaru/model"
+	"github.com/wegotour/backendbaru/module"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/crypto/argon2"
