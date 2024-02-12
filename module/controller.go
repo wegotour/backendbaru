@@ -455,15 +455,19 @@ func GetAllPenggunaByAdmin(db *mongo.Database) (pengguna []model.Pengguna, err e
 //tiket
 
 func InsertTiket(iduser primitive.ObjectID, db *mongo.Database, insertedDoc model.Tiket) error {
-	if insertedDoc.TujuanEvent == "" || insertedDoc.Jemputan == "" || insertedDoc.Keterangan == "" || insertedDoc.Harga == "" {
+	if insertedDoc.NamaTicket == "" || insertedDoc.Harga == "" || insertedDoc.NamaPembeli == "" || insertedDoc.Email == "" || insertedDoc.Alamat == "" || insertedDoc.NoHP == "" || insertedDoc.Quantity == "" || insertedDoc.Total == "" {
 		return fmt.Errorf("mohon untuk melengkapi data")
 	}
 
 	tkt := bson.M{
-		"tujuaneven":    insertedDoc.TujuanEvent,
-		"jemputan":   insertedDoc.Jemputan,
-		"keterangan":   insertedDoc.Keterangan,
-		"harga":        insertedDoc.Harga,
+		"namaticket":    insertedDoc.NamaTicket,
+		"harga":   insertedDoc.Harga,
+		"namapembeli":   insertedDoc.NamaPembeli,
+		"email":        insertedDoc.Email,
+		"alamat":        insertedDoc.Alamat,
+		"nohp":        insertedDoc.NoHP,
+		"quantity":        insertedDoc.Quantity,
+		"total":        insertedDoc.Total,
 	}
 
 	_, err := InsertOneDoc(db, "tiket", tkt)
@@ -478,14 +482,18 @@ func UpdateTiket(idparam, iduser primitive.ObjectID, db *mongo.Database, inserte
 	if err != nil {
 		return err
 	}
-	if insertedDoc.TujuanEvent == "" || insertedDoc.Jemputan == "" || insertedDoc.Keterangan == "" || insertedDoc.Harga == ""  {
+	if insertedDoc.NamaTicket == "" || insertedDoc.Harga == "" || insertedDoc.NamaPembeli == "" || insertedDoc.Email == "" || insertedDoc.Alamat == "" || insertedDoc.NoHP == "" || insertedDoc.Quantity == "" || insertedDoc.Total == "" {
 		return fmt.Errorf("mohon untuk melengkapi data")
 	}
 	tkt := bson.M{
-		"tujuaneven":    insertedDoc.TujuanEvent,
-		"jemputan":   insertedDoc.Jemputan,
-		"keterangan":   insertedDoc.Keterangan,
-		"harga":        insertedDoc.Harga,
+		"namaticket":    insertedDoc.NamaTicket,
+		"harga":   insertedDoc.Harga,
+		"namapembeli":   insertedDoc.NamaPembeli,
+		"email":        insertedDoc.Email,
+		"alamat":        insertedDoc.Alamat,
+		"nohp":        insertedDoc.NoHP,
+		"quantity":        insertedDoc.Quantity,
+		"total":        insertedDoc.Total,
 	}
 
 	err = UpdateOneDoc(idparam, db, "tiket", tkt)

@@ -36,10 +36,14 @@ type Admin struct {
 
 type Tiket struct {
 	ID          primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
-	TujuanEvent string             `json:"tujuaneven,omitempty" bson:"tujuaneven,omitempty"`
-	Jemputan    string             `json:"jemputan,omitempty" bson:"jemputan,omitempty"`
-	Keterangan  string             `json:"keterangan,omitempty" bson:"keterangan,omitempty"`
-	Harga       string             `json:"harga,omitempty" bson:"harga,omitempty"`
+	NamaTicket  string             `bson:"namaticket,omitempty" json:"namaticket,omitempty"`
+	Harga       string             `bson:"harga,omitempty" json:"harga,omitempty"`
+	NamaPembeli string             `bson:"namapembeli,omitempty" json:"namapembeli,omitempty"`
+	Email       string             `bson:"email,omitempty" json:"email,omitempty"`
+	Alamat      string             `bson:"alamat,omitempty" json:"alamat,omitempty"`
+	NoHP        string             `bson:"nohp,omitempty" json:"nohp,omitempty"`
+	Quantity    string             `bson:"quantity,omitempty" json:"quantity,omitempty"`
+	Total       string             `bson:"total,omitempty" json:"total,omitempty"`
 }
 
 

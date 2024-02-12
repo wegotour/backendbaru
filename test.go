@@ -28,11 +28,15 @@ func TestGetUserFromEmail(t *testing.T) {
 // Insert-Tiket
 func TestInsertOneTiket(t *testing.T) {
 	var doc model.Tiket
-	doc.TujuanEvent = "Event Coldplay 10"
-	doc.Jemputan = "Terminal Mangga Sari jakarta timur st.12 jalan soekarno hatta"
-	doc.Keterangan = "Jam Jemputan 15:00"
-	doc.Harga = "RP 120.0000"
-	if doc.TujuanEvent == "" || doc.Jemputan == "" || doc.Keterangan == "" || doc.Harga == "" {
+	doc.NamaTicket = "Event Coldplay 10"
+	doc.Harga = "Terminal Mangga Sari jakarta timur st.12 jalan soekarno hatta"
+	doc.NamaPembeli = "Jam Jemputan 15:00"
+	doc.Email = "RP 120.0000"
+	doc.Alamat = "RP 120.0000"
+	doc.NoHP = "RP 120.0000"
+	doc.Quantity = "RP 120.0000"
+	doc.Total = "RP 120.0000"
+	if doc.NamaTicket == "" || doc.Harga == "" || doc.NamaPembeli == "" || doc.Email == "" || doc.Alamat == "" || doc.NoHP == "" || doc.Quantity == "" || doc.Total == ""{
 		t.Errorf("mohon untuk melengkapi data")
 	} else {
 		insertedID, err := module.InsertOneDoc(db, "tiket", doc)
@@ -175,7 +179,6 @@ func TestWatoken(t *testing.T) {
 	fmt.Println("isi : ", body, err)
 }
 
-
 // test Tiket
 func TestInsertTiket(t *testing.T) {
 	conn := module.MongoConnect("MONGOSTRING", "serbaevent_db")
@@ -187,10 +190,14 @@ func TestInsertTiket(t *testing.T) {
 	// 	t.Errorf("Error role: %v", err)
 	// }
 	var datatiket model.Tiket
-	datatiket.TujuanEvent = "Event Coldplay 5 Jakarta"
-	datatiket.Jemputan = "Terminal Bus Jakarta"
-	datatiket.Keterangan = "Jemputan 15:00"
-	datatiket.Harga = "Rp 120.000"
+	datatiket.NamaTicket = "Event Coldplay 5 Jakarta"
+	datatiket.Harga = "Terminal Bus Jakarta"
+	datatiket.NamaPembeli = "Jemputan 15:00"
+	datatiket.Email = "Rp 120.000"
+	datatiket.Alamat = "Rp 120.000"
+	datatiket.NoHP = "Rp 120.000"
+	datatiket.Quantity = "Rp 120.000"
+	datatiket.Total = "Rp 120.000"
 	err = module.InsertTiket(payload.Id, conn, datatiket)
 	if err != nil {
 		t.Errorf("Error insert : %v", err)
@@ -209,10 +216,14 @@ func TestUpdateTiket(t *testing.T) {
 		t.Errorf("Error role: %v", err)
 	}
 	var datatiket model.Tiket
-	datatiket.TujuanEvent = "Event Coldplay 3 surabaya"
-	datatiket.Jemputan = "Terminal bus surabaya "
-	datatiket.Keterangan = "jam jemputan 13:00"
-	datatiket.Harga = "Rp 100.000"
+	datatiket.NamaTicket = "Event Coldplay 3 surabaya"
+	datatiket.Harga = "Terminal bus surabaya "
+	datatiket.NamaPembeli = "jam jemputan 13:00"
+	datatiket.Email = "Rp 100.000"
+	datatiket.Alamat = "Rp 100.000"
+	datatiket.NoHP = "Rp 100.000"
+	datatiket.Quantity = "Rp 100.000"
+	datatiket.Total = "Rp 100.000"
 	id := "6569a53d783c6970079a560b"
 	objectId, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
